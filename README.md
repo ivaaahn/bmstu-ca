@@ -1,2 +1,2 @@
-# bmstu-ca
-Computational algorithms
+# Computational algorithms
+
