@@ -2,7 +2,6 @@ import numpy as np
 from itertools import product
 
 import settings
-
 from polynomes.newton_polyn import bilinear_interp, newton_polyn
 from polynomes.utils import trim_table, read_table
 
@@ -22,4 +21,3 @@ def main():
 if __name__ == '__main__':
     np.set_printoptions(precision=3)
     main()
-loguru==0.5.3

@@ -1,6 +1,7 @@
 import numpy as np
 from bisect import bisect
 
+
 __all__ = ["read_table", "trim_table"]
 
 
@@ -35,11 +36,6 @@ def trim_table(table: np.ndarray, n_coeffs: tuple, point: tuple) -> np.ndarray:
     x, y = point
 
     x_args, table = _trim_axis(x_args, table, nx + 1, x)
-    y_args, table = _trim_axis(y_args, table.transpose(), ny + 1, y); 
+    y_args, table = _trim_axis(y_args, table.transpose(), ny + 1, y)
 
     return x_args, y_args, table.transpose()
-
-
-table = read_table("data/table.dat")
-# x_args, y_args, table = trim_table(table, (1, 1), (1.5, 1.5))
-# print(trim_table(table, (1, 1), (1.5, 1.5)))
