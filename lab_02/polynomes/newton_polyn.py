@@ -29,7 +29,7 @@ def newton_polyn(x_data: np.ndarray, y_data: np.ndarray, x: float) -> np.float64
     return p
 
 
-def bilinear_interp(x_args, y_args, z: np.ndarray, point: tuple):
+def bilinear_interp(x_args: np.ndarray, y_args: np.ndarray, z: np.ndarray, point: tuple) -> np.float64:
     f = [newton_polyn(x_args, z[i, :], point[0]) for i in range(len(y_args))]
 
     return newton_polyn(y_args, np.copy(f), point[1])
