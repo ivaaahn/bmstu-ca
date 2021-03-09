@@ -1,7 +1,7 @@
 import numpy as np
 
 
-__all__ = ["newton_polyn"]
+__all__ = ["newton_polyn", "bilinear_interp"]
 
 
 def _find_coef(x: np.ndarray, y: np.ndarray) -> np.ndarray:
