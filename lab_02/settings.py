@@ -1,5 +1,5 @@
 import os
-from os import join, dirname
+from os.path import join, dirname
 from dotenv import load_dotenv
 
 
