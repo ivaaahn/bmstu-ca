@@ -41,3 +41,4 @@ def trim_table(table: np.ndarray, numof_rows: int, x: float) -> np.ndarray:
         new_table = table[length - numof_rows:]
 
     return new_table
+    
