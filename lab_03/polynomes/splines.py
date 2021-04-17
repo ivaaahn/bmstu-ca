@@ -10,7 +10,6 @@ from polynomes.utils import parse_table
 def _get_h(table: np.ndarray, index: int) -> float:
     return table[index, 0] - table[index-1, 0]
 
-
 def _get_c_coef(table: np.ndarray, index: int):
     def _get_f(i: int) -> float:
         ydelta = lambda i: table[i, 1] - table[i-1, 1]
@@ -24,17 +23,15 @@ def _get_c_coef(table: np.ndarray, index: int):
         hr, hl = _get_h(table, i), _get_h(table, i-1)
         return -hr / (hl * xi_prev + 2 * (hl + hr))
 
-    count: int = len(table)
-    xi, eta = np.zeros(count+1), np.zeros(count+1)
+    N: int = len(table)-1
+    xi, eta = np.zeros(N+2), np.zeros(N+2)
 
-    for i in range(1, count):
+    for i in range(2, N+1):
         xi[i+1] = _get_xi(xi[i], i)
         eta[i+1] = _get_eta(eta[i], xi[i], i)
 
-    print(xi, eta)
-
     c: float = 0.0
-    for i in range(count-1, index+1, -1):
+    for i in range(N, index+1, -1):
         c = xi[i+1] * c + eta[i+1]
 
     cr = xi[index+2] * c + eta[index+2]
@@ -52,7 +49,6 @@ def _get_b_coef(table: np.ndarray, cl, cr, index, hi) -> None:
 def _get_d_coef(cl, cr, hi) -> float:
     return (cr - cl) / (3 * hi)
 
-
 def _get_coeffs(table: np.ndarray, index, hi) -> Tuple[float, float, float, float, float]:
     cl, cr = _get_c_coef(table, index)
     a = _get_a_coef(table, index)
@@ -60,10 +56,8 @@ def _get_coeffs(table: np.ndarray, index, hi) -> Tuple[float, float, float, floa
     d = _get_d_coef(cl, cr, hi)
     return a, b, cl, d
 
-
 def spline_interpolation(x: float, table: np.ndarray) -> float:
     index = bisect(table[:, 0], x)
-    print(index)
     a,b,c,d = _get_coeffs(table, index, _get_h(table, index))
     dx = x - table[index-1, 0]
 
