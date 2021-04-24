@@ -1,6 +1,6 @@
 from settings import PATH_TO_TABLE
-from polynomes.utils import read_table
-from polynomes.splines import spline_interpolation
+from utils import read_table
+from splines import spline_interpolation
 
 
 def main():
