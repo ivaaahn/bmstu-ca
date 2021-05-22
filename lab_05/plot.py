@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import settings
 
 def get_label(n, m, md1, md2) -> str:
-    return f'N = {n}, M = {m}, Методы: {md1}-{md2}'
+    return f'N, M, Методы: ({n} : {m} : {md1}-{md2})'
 
 
 def plot(values, all_n, all_m, methods1, methods2):
@@ -16,11 +16,11 @@ def plot(values, all_n, all_m, methods1, methods2):
 
     for i in range(len(values)):
         x, y = [], []
-        j = settings.TAO_START
-        while j < settings.TAO_END:
+        j = settings.TAU_START
+        while j < settings.TAU_END:
             x.append(j)
             y.append(values[i](j))
-            j += settings.TAO_STEP
+            j += settings.TAU_STEP
 
         plt.plot(x, y, label=get_label(all_n[i], all_m[i], methods1[i], methods2[i]))
 

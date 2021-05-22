@@ -24,26 +24,27 @@ class Method(Enum):
 
 
 class Calculator(object):
-    def __init__(self, lm: List[List[float]], n: List[int], fn: List[Method]):
-        self.lm = lm
+    def __init__(self, boundaries: List[List[float]], n: int, m: int, methods: List[Method]):
+        self.boundaries = boundaries
         self.n = n
-        self.f1 = fn[0].get_func()
-        self.f2 = fn[1].get_func()
+        self.m = m
+        self.f1 = methods[0].get_func()
+        self.f2 = methods[1].get_func()
 
     def __call__(self, p: float) -> float:
         f = Calculator.__integrated(p)
 
         def inner(x): return self.f2(
             lambda val1: f(x, val1),
-            self.lm[1][0],
-            self.lm[1][1],
-            self.n[1])
+            self.boundaries[1][0],
+            self.boundaries[1][1],
+            self.m)
 
         def integ(): return self.f1(
             inner,
-            self.lm[0][0],
-            self.lm[0][1],
-            self.n[0])
+            self.boundaries[0][0],
+            self.boundaries[0][1],
+            self.n)
 
         return integ()
 

@@ -22,10 +22,10 @@ def main():
         methods2.append(solve.Method(
             int(input('Выберите "внутренний" метод интегрирования: (0 - Гаусс, 1 - Симпсон): '))))
 
-        lm = [[0, pi / 2], [0, pi / 2]]
+        boundaries = [[0, pi / 2], [0, pi / 2]]
 
         values.append(solve.Calculator(
-            lm, [all_n[-1], all_m[-1]], [methods1[-1], methods2[-1]]))
+            boundaries, all_n[-1], all_m[-1], [methods1[-1], methods2[-1]]))
 
         print(f'Результат (тау = {p:.2f}): {values[-1](p):.7f}')
 
