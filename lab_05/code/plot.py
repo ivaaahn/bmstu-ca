@@ -9,8 +9,8 @@ def plot(values, all_n, all_m, methods1, methods2):
 
     plt.clf()
 
-    plt.xlabel("Tao")
-    plt.ylabel("Eps(Tao)")
+    plt.xlabel("Tau")
+    plt.ylabel("Eps(Tau)")
     plt.grid(which='minor', color='k', linestyle=':')
     plt.grid(which='major', color='k')
 
